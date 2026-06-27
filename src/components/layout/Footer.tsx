@@ -25,7 +25,7 @@ export default function Footer() {
               <Image 
                 src={mounted && theme === 'light' ? "/brand-logo.svg" : "/brand-logo-white.svg"} 
                 alt="TuneOnus Logo" 
-                width={152} 
+                width={230} 
                 height={48} 
                 className={styles.logoImage} 
               />

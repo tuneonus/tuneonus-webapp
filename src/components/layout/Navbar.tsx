@@ -24,6 +24,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services', hasDropdown: true },
@@ -38,9 +50,9 @@ export default function Navbar() {
       <div className={`container ${styles.navContainer}`}>
         <Link href="/" className={styles.logo}>
           <Image 
-            src={mounted && theme === 'light' ? "/brand-logo.svg" : "/brand-logo-white.svg"} 
+            src="/brand-logo-white.svg" 
             alt="TuneOnus Logo" 
-            width={180} 
+            width={230} 
             height={56} 
             priority 
           />

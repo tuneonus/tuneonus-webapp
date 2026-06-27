@@ -16,7 +16,7 @@ import Footer from "../components/layout/Footer";
 
 export default function Home() {
   return (
-    <main style={{ position: 'relative', zIndex: 1, background: 'transparent' }}>
+    <main style={{ position: 'relative', zIndex: 1, background: 'transparent', overflowX: 'hidden', width: '100%' }}>
       <Navbar />
       <Hero />
       <Services />

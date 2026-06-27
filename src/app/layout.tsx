@@ -18,23 +18,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tuneonus.com"),
-  title: "TuneOnus | Premium AI & Software Engineering",
+  title: "TuneOnus | Premium AI  & Software Engineering",
   description: "TuneOnus is an AI, Web & App Development, and Software Engineering company that builds intelligent digital products, SaaS platforms, and scalable business software.",
   keywords: ["AI Development", "Web Apps", "App Development", "Mobile Apps", "SaaS", "Software Engineering", "React", "Next.js"],
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
-    ],
-    apple: [
-      { url: '/apple-icon.png' },
-    ],
+    icon: "/icon.svg",
   },
   openGraph: {
-    title: "TuneOnus | Premium AI & Software Engineering",
+    title: "TuneOnus | Premium AI  & Software Engineering",
     description: "TuneOnus is an AI, Web & App Development, and Software Engineering company that builds intelligent digital products.",
     url: "https://www.tuneonus.com",
     siteName: "TuneOnus",
@@ -51,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TuneOnus | Premium AI & Software Engineering",
+    title: "TuneOnus | Premium AI  & Software Engineering",
     description: "TuneOnus is an AI, Web App Development, and Software Engineering company.",
     images: ["/og-image.jpg"],
   },
