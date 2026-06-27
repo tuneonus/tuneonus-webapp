@@ -1,6 +1,7 @@
 import Navbar from "../components/layout/Navbar";
 import Hero from "../components/sections/Hero";
 import Services from "../components/sections/Services";
+import AIAgents from "../components/sections/AIAgents";
 import Solutions from "../components/sections/Solutions";
 import FeaturedProjects from "../components/sections/FeaturedProjects";
 import WhyTuneOnus from "../components/sections/WhyTuneOnus";
@@ -19,6 +20,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
+      <AIAgents />
       <Solutions />
       <FeaturedProjects />
       <WhyTuneOnus />

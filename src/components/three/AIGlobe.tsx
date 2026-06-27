@@ -18,7 +18,8 @@ export default function AIGlobe() {
 
     // Camera
     const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
-    camera.position.z = 2.8;
+    const isMobileSize = window.innerWidth < 768;
+    camera.position.z = isMobileSize ? 2.1 : 2.8;
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -28,7 +29,7 @@ export default function AIGlobe() {
     mount.appendChild(renderer.domElement);
 
     // ── Particle Globe ──────────────────────────────────────────────
-    const particleCount = 1800;
+    const particleCount = isMobileSize ? 500 : 1800;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
@@ -54,7 +55,7 @@ export default function AIGlobe() {
     geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const mat = new THREE.PointsMaterial({
-      size: 0.018,
+      size: isMobileSize ? 0.025 : 0.018,
       vertexColors: true,
       transparent: true,
       opacity: 0.85,
@@ -67,7 +68,8 @@ export default function AIGlobe() {
     // ── AI Network Lines ────────────────────────────────────────────
     // Pick random "node" pairs and connect them with glowing lines
     const nodeIndices: number[] = [];
-    for (let i = 0; i < 60; i++) {
+    const lineCount = isMobileSize ? 20 : 60;
+    for (let i = 0; i < lineCount; i++) {
       nodeIndices.push(Math.floor(Math.random() * particleCount));
     }
 
@@ -77,9 +79,7 @@ export default function AIGlobe() {
     for (let i = 0; i < nodeIndices.length; i++) {
       const a = nodeIndices[i];
       const b = nodeIndices[(i + 1) % nodeIndices.length];
-      // A
       linePositions.push(positions[a * 3], positions[a * 3 + 1], positions[a * 3 + 2]);
-      // B
       linePositions.push(positions[b * 3], positions[b * 3 + 1], positions[b * 3 + 2]);
     }
 
@@ -108,7 +108,7 @@ export default function AIGlobe() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // ── Animation ───────────────────────────────────────────────────
+    // ── Animation ──────────────────────────────────────────────
     let animId: number;
     let time = 0;
 

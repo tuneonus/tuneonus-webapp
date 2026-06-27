@@ -21,6 +21,18 @@ export const metadata: Metadata = {
   title: "TuneOnus | Premium AI & Software Engineering",
   description: "TuneOnus is an AI, Web & App Development, and Software Engineering company that builds intelligent digital products, SaaS platforms, and scalable business software.",
   keywords: ["AI Development", "Web Apps", "App Development", "Mobile Apps", "SaaS", "Software Engineering", "React", "Next.js"],
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-icon.png' },
+    ],
+  },
   openGraph: {
     title: "TuneOnus | Premium AI & Software Engineering",
     description: "TuneOnus is an AI, Web & App Development, and Software Engineering company that builds intelligent digital products.",

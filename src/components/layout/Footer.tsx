@@ -1,14 +1,18 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import styles from './Footer.module.css';
+import { useTheme } from '../providers/ThemeProvider';
 
 const FooterWave = dynamic(() => import('../three/FooterWave'), { ssr: false });
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <footer className={styles.footer}>
@@ -18,7 +22,13 @@ export default function Footer() {
           {/* Brand Column */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
-              <Image src="/brand-logo.svg" alt="TuneOnus Logo" width={152} height={48} className={styles.logoImage} />
+              <Image 
+                src={mounted && theme === 'light' ? "/brand-logo.svg" : "/brand-logo-white.svg"} 
+                alt="TuneOnus Logo" 
+                width={152} 
+                height={48} 
+                className={styles.logoImage} 
+              />
             </Link>
             <p className={styles.description}>
               We design and develop AI-powered products, scalable web applications, and modern software solutions.

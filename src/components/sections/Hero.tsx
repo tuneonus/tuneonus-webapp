@@ -58,8 +58,13 @@ export default function Hero() {
 
           <h1 className={styles.title}>
             Build Intelligent{' '}
-            <span className="text-gradient">{text}</span>
-            <span className={styles.cursor}>|</span>
+            <span className={styles.typewriterWrapper}>
+              <span className={styles.hiddenText} aria-hidden="true">Web Applications</span>
+              <span className={styles.typingText}>
+                <span className="text-gradient">{text}</span>
+                <span className={styles.cursor}>|</span>
+              </span>
+            </span>
           </h1>
 
           <p className={styles.subtitle}>
@@ -68,7 +73,6 @@ export default function Hero() {
 
           <div className={styles.actions}>
             <Button variant="primary" size="lg">Start Project</Button>
-            <Button variant="outline" size="lg">View Work</Button>
           </div>
         </div>
 

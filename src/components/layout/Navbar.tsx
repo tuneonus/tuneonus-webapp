@@ -37,7 +37,13 @@ export default function Navbar() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.navContainer}`}>
         <Link href="/" className={styles.logo}>
-          <Image src="/brand-logo-white.svg" alt="TuneOnus Logo" width={180} height={56} />
+          <Image 
+            src={mounted && theme === 'light' ? "/brand-logo.svg" : "/brand-logo-white.svg"} 
+            alt="TuneOnus Logo" 
+            width={180} 
+            height={56} 
+            priority 
+          />
         </Link>
 
         {/* Desktop Nav */}

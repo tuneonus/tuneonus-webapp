@@ -7,8 +7,13 @@
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 2.5rem;
+  padding: 1.5rem;
   box-shadow: var(--shadow-md);
+}
+@media (min-width: 640px) {
+  .formContainer {
+    padding: 2.5rem;
+  }
 }
 .form {
   display: flex;

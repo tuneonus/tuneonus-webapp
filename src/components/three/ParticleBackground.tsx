@@ -7,15 +7,15 @@ export default function ParticleBackground() {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Skip heavy 3D on mobile for performance
-    if (window.innerWidth < 768) return;
+    const isMobile = window.innerWidth < 768;
 
     const mount = mountRef.current;
     if (!mount) return;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Lower pixel ratio on mobile to drastically save battery/GPU
+    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
 
@@ -24,11 +24,11 @@ export default function ParticleBackground() {
     camera.position.z = 5;
 
     // ── Radar rings: expanding concentric circles ──────────────────
-    const RING_COUNT = 6;
+    const RING_COUNT = isMobile ? 3 : 6;
     const rings: Array<{ mesh: THREE.Mesh; phase: number }> = [];
 
     for (let i = 0; i < RING_COUNT; i++) {
-      const geo = new THREE.RingGeometry(0.01, 0.03, 96);
+      const geo = new THREE.RingGeometry(0.01, 0.03, isMobile ? 48 : 96);
       const mat = new THREE.MeshBasicMaterial({
         color: i % 2 === 0 ? 0x7c3aed : 0x06b6d4,
         transparent: true,
@@ -42,10 +42,12 @@ export default function ParticleBackground() {
     }
 
     // ── Static faint grid circles (background depth) ───────────────
-    for (let r = 1; r <= 5; r++) {
+    const gridCount = isMobile ? 3 : 5;
+    for (let r = 1; r <= gridCount; r++) {
       const pts: THREE.Vector3[] = [];
-      for (let j = 0; j <= 128; j++) {
-        const a = (j / 128) * Math.PI * 2;
+      const segments = isMobile ? 64 : 128;
+      for (let j = 0; j <= segments; j++) {
+        const a = (j / segments) * Math.PI * 2;
         pts.push(new THREE.Vector3(Math.cos(a) * r * 0.9, Math.sin(a) * r * 0.9, -1));
       }
       const lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
@@ -83,7 +85,7 @@ export default function ParticleBackground() {
     scene.add(sweepLine);
 
     // Sweep trail — fading arc behind the arm
-    const TRAIL_SEGMENTS = 40;
+    const TRAIL_SEGMENTS = isMobile ? 15 : 40;
     const trailLines: THREE.Line[] = [];
     for (let i = 0; i < TRAIL_SEGMENTS; i++) {
       const tGeo = new THREE.BufferGeometry().setFromPoints([
@@ -101,12 +103,12 @@ export default function ParticleBackground() {
     }
 
     // ── Blip particles (targets detected by radar) ─────────────────
-    const BLIP_COUNT = 18;
+    const BLIP_COUNT = isMobile ? 8 : 18;
     const blips: Array<{ mesh: THREE.Mesh; angle: number; radius: number; flickerSpeed: number }> = [];
     for (let i = 0; i < BLIP_COUNT; i++) {
       const angle  = Math.random() * Math.PI * 2;
       const radius = 0.5 + Math.random() * 3.8;
-      const bGeo = new THREE.SphereGeometry(0.04, 8, 8);
+      const bGeo = new THREE.SphereGeometry(isMobile ? 0.05 : 0.04, 8, 8);
       const bMat = new THREE.MeshBasicMaterial({
         color: Math.random() > 0.5 ? 0x22d3ee : 0xa78bfa,
         transparent: true,
