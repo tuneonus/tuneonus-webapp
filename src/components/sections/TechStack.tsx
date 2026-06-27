@@ -4,8 +4,9 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function TechStack() {
   const techs = [
-    'React', 'Next.js', 'React Native', 'Node.js', 
-    'Python', 'TypeScript', 'AI', 'Cloud'
+    'React', 'Next.js', 'React Native', 'Flutter', 
+    'Swift', 'Kotlin', 'Node.js', 'Python', 
+    'TypeScript', 'AI', 'Cloud'
   ];
 
   return (

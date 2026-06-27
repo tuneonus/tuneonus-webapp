@@ -1,19 +1,24 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import styles from './Footer.module.css';
+
+const FooterWave = dynamic(() => import('../three/FooterWave'), { ssr: false });
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
+      <FooterWave />
       <div className={`container ${styles.container}`}>
         <div className={styles.grid}>
           {/* Brand Column */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
-              <span className={styles.logoMark}>TNS</span>
-              <span className={styles.logoText}>TuneOnus</span>
+              <Image src="/brand-logo.svg" alt="TuneOnus Logo" width={152} height={48} className={styles.logoImage} />
             </Link>
             <p className={styles.description}>
               We design and develop AI-powered products, scalable web applications, and modern software solutions.
@@ -34,7 +39,7 @@ export default function Footer() {
           <div className={styles.linksCol}>
             <h4 className={styles.columnTitle}>Connect</h4>
             <ul className={styles.linkList}>
-              <li><a href="mailto:hello@tuneonus.com">Email Us</a></li>
+              <li><a href="mailto:tuneounus@gmail.com">Email Us</a></li>
               <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
             </ul>

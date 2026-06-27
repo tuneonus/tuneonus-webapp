@@ -1,16 +1,16 @@
 .hero {
   position: relative;
   display: flex;
-  align-items: center;
-  padding: 8rem 0 4rem;
+  align-items: flex-start;
+  padding: 7rem 0 3rem;
   overflow: hidden;
-  background-color: var(--background-color);
 }
 
 @media (min-width: 768px) {
   .hero {
     min-height: 100vh;
-    padding: 6rem 0;
+    padding: 7rem 0 4rem;
+    align-items: center;
   }
 }
 
@@ -50,6 +50,21 @@
 .container {
   position: relative;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 0;
+  }
 }
 
 .content {
@@ -57,8 +72,52 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    align-items: flex-start;
+    text-align: left;
+    max-width: 560px;
+    flex: 1;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 0.8s step-end infinite;
+  color: var(--accent-color);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.globeWrapper {
+  width: 320px;
+  height: 320px;
+  flex-shrink: 0;
+  position: relative;
+  align-self: center;
+  opacity: 0.9;
+}
+
+@media (min-width: 640px) {
+  .globeWrapper {
+    width: 440px;
+    height: 440px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .globeWrapper {
+    width: 580px;
+    height: 580px;
+    align-self: auto;
+    opacity: 1;
+  }
 }
 
 .badge {
@@ -104,6 +163,7 @@
 .actions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   width: 100%;
   animation-delay: 0.2s;
@@ -114,5 +174,11 @@
     flex-direction: row;
     justify-content: center;
     width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .actions {
+    justify-content: flex-start;
   }
 }

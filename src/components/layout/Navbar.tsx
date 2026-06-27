@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Navbar.module.css';
 import { Button } from '../ui/Button';
 import { useTheme } from '../providers/ThemeProvider';
@@ -24,19 +25,19 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Work', href: '#work' },
     { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Services', href: '#services', hasDropdown: true },
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Resources', href: '#resources', hasDropdown: true },
+    { name: 'Contact Us', href: '#contact' },
+    { name: 'Careers', href: '#careers' },
   ];
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.navContainer}`}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoMark}>TNS</span>
-          <span className={styles.logoText}>TuneOnus</span>
+          <Image src="/brand-logo-white.svg" alt="TuneOnus Logo" width={180} height={56} />
         </Link>
 
         {/* Desktop Nav */}
@@ -46,6 +47,11 @@ export default function Navbar() {
               <li key={link.name}>
                 <Link href={link.href} className={styles.navLink}>
                   {link.name}
+                  {link.hasDropdown && (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.dropdownIcon}>
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  )}
                 </Link>
               </li>
             ))}
