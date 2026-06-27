@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Services.module.css';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function Services() {
   const services = [
@@ -39,26 +40,30 @@ export default function Services() {
   return (
     <section id="services" className="section">
       <div className="container">
-        <div className="text-center">
-          <h2 className="animate-fade-in">Our Services</h2>
-          <p className="subtitle animate-fade-in">
-            Comprehensive engineering solutions to transform your ideas into reality.
-          </p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="text-center">
+            <h2>Our Services</h2>
+            <p className="subtitle">
+              Comprehensive engineering solutions to transform your ideas into reality.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className={styles.grid}>
           {services.map((service, index) => (
-            <Card key={index} hoverEffect={true} className={styles.card}>
-              <CardHeader>
-                <div className={styles.iconWrapper}>
-                  <span className={styles.icon}>{service.icon}</span>
-                </div>
-                <CardTitle>{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className={styles.description}>{service.description}</p>
-              </CardContent>
-            </Card>
+            <ScrollReveal key={index} delay={index * 0.1} direction="up">
+              <Card hoverEffect={true} className={styles.card}>
+                <CardHeader>
+                  <div className={styles.iconWrapper}>
+                    <span className={styles.icon}>{service.icon}</span>
+                  </div>
+                  <CardTitle>{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className={styles.description}>{service.description}</p>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
           ))}
         </div>
       </div>

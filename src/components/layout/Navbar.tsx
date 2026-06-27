@@ -4,10 +4,15 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { Button } from '../ui/Button';
+import { useTheme } from '../providers/ThemeProvider';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  // Prevent hydration mismatch for icon rendering
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,6 +51,13 @@ export default function Navbar() {
             ))}
           </ul>
           <div className={styles.navActions}>
+            <button 
+              className={styles.themeToggle} 
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Toggle theme"
+            >
+              {mounted && (theme === 'dark' ? '☀️' : '🌙')}
+            </button>
             <Button variant="primary">Start Project</Button>
           </div>
         </nav>
@@ -74,8 +86,19 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          <li className={styles.mobileNavAction}>
-             <Button variant="primary" style={{ width: '100%' }}>Start Project</Button>
+          <li className={styles.mobileNavAction} style={{ display: 'flex', gap: '1rem' }}>
+             <button 
+               className={styles.themeToggle} 
+               onClick={() => {
+                 setTheme(theme === 'dark' ? 'light' : 'dark');
+                 setMobileMenuOpen(false);
+               }}
+               aria-label="Toggle theme"
+               style={{ width: '48px', height: '48px', flexShrink: 0 }}
+             >
+               {mounted && (theme === 'dark' ? '☀️' : '🌙')}
+             </button>
+             <Button variant="primary" style={{ flex: 1 }}>Start Project</Button>
           </li>
         </ul>
       </div>

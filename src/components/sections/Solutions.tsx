@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Solutions.module.css';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function Solutions() {
   const industries = [
@@ -14,22 +15,26 @@ export default function Solutions() {
   return (
     <section id="solutions" className={`section ${styles.solutions}`}>
       <div className="container">
-        <div className="text-center">
-          <h2 className="animate-fade-in">Industry Solutions</h2>
-          <p className="subtitle animate-fade-in">
-            We build specialized software across diverse sectors, understanding the unique challenges of each.
-          </p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="text-center">
+            <h2>Industry Solutions</h2>
+            <p className="subtitle">
+              We build specialized software across diverse sectors, understanding the unique challenges of each.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className={styles.grid}>
           {industries.map((industry, i) => (
-            <div key={i} className={styles.item}>
-              <div className={styles.bullet}></div>
-              <div>
-                <h3 className={styles.title}>{industry.name}</h3>
-                <p className={styles.desc}>{industry.desc}</p>
+            <ScrollReveal key={i} delay={i * 0.1} direction="left">
+              <div className={styles.item}>
+                <div className={styles.bullet}></div>
+                <div>
+                  <h3 className={styles.title}>{industry.name}</h3>
+                  <p className={styles.desc}>{industry.desc}</p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Process.module.css';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function Process() {
   const steps = [
@@ -15,25 +16,29 @@ export default function Process() {
   return (
     <section className={`section ${styles.process}`}>
       <div className="container">
-        <div className="text-center">
-          <h2 className="animate-fade-in">Our Process</h2>
-          <p className="subtitle animate-fade-in">
-            A proven methodology for delivering robust software.
-          </p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="text-center">
+            <h2>Our Process</h2>
+            <p className="subtitle">
+              A proven methodology for delivering robust software.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className={styles.timeline}>
           {steps.map((step, i) => (
-            <div key={i} className={styles.step}>
-              <div className={styles.dot}>
-                <span className={styles.number}>{i + 1}</span>
+            <ScrollReveal key={i} delay={i * 0.1} direction="up">
+              <div className={styles.step}>
+                <div className={styles.dot}>
+                  <span className={styles.number}>{i + 1}</span>
+                </div>
+                <div className={styles.content}>
+                  <h4 className={styles.title}>{step.title}</h4>
+                  <p className={styles.desc}>{step.desc}</p>
+                </div>
+                {i < steps.length - 1 && <div className={styles.line}></div>}
               </div>
-              <div className={styles.content}>
-                <h4 className={styles.title}>{step.title}</h4>
-                <p className={styles.desc}>{step.desc}</p>
-              </div>
-              {i < steps.length - 1 && <div className={styles.line}></div>}
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './FeaturedProjects.module.css';
 import { Card, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function FeaturedProjects() {
   const projects = [
@@ -32,37 +33,41 @@ export default function FeaturedProjects() {
   return (
     <section id="work" className="section">
       <div className="container">
-        <div className={styles.header}>
-          <div>
-            <h2 className="animate-fade-in">Featured Work</h2>
-            <p className="subtitle animate-fade-in" style={{ margin: 0 }}>
-              Recent digital products we've engineered.
-            </p>
+        <ScrollReveal direction="down">
+          <div className={styles.header}>
+            <div>
+              <h2>Featured Work</h2>
+              <p className="subtitle" style={{ margin: 0 }}>
+                Recent digital products we've engineered.
+              </p>
+            </div>
+            <Button variant="outline" className="hidden-mobile">View All Projects</Button>
           </div>
-          <Button variant="outline" className="hidden-mobile">View All Projects</Button>
-        </div>
+        </ScrollReveal>
 
         <div className={styles.grid}>
           {projects.map((project, i) => (
-            <Card key={i} variant="default" className={styles.card}>
-              <div className={styles.imagePlaceholder}>
-                <Image 
-                  src={project.image} 
-                  alt={project.name} 
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className={styles.projectImage}
-                />
-              </div>
-              <CardContent className={styles.content}>
-                <div className={styles.category}>{project.category}</div>
-                <h3 className={styles.title}>{project.name}</h3>
-                <p className={styles.result}>{project.result}</p>
-                <div className={styles.metric}>
-                  <span className={styles.metricIcon}>↗</span> {project.metrics}
+            <ScrollReveal key={i} delay={i * 0.2} direction="up">
+              <Card variant="default" className={styles.card}>
+                <div className={styles.imagePlaceholder}>
+                  <Image 
+                    src={project.image} 
+                    alt={project.name} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className={styles.projectImage}
+                  />
                 </div>
-              </CardContent>
-            </Card>
+                <CardContent className={styles.content}>
+                  <div className={styles.category}>{project.category}</div>
+                  <h3 className={styles.title}>{project.name}</h3>
+                  <p className={styles.result}>{project.result}</p>
+                  <div className={styles.metric}>
+                    <span className={styles.metricIcon}>↗</span> {project.metrics}
+                  </div>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
           ))}
         </div>
         
