@@ -50,8 +50,6 @@ export default function Footer() {
             <h4 className={styles.columnTitle}>Connect</h4>
             <ul className={styles.linkList}>
               <li><a href="mailto:tuneonus@gmail.com">Email Us</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
             </ul>
           </div>
         </div>

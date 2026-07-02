@@ -5,35 +5,17 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 
 const teamMembers = [
   { 
-    name: 'ShaN', 
-    role: 'Mobile App & AI Developer', 
-    initial: 'S', 
-    bio: 'Specializes in scaling intelligent mobile experiences and integrating next-gen AI capabilities.' 
+    name: 'Prasanth', 
+    role: 'Founder & Lead Engineer', 
+    initial: 'P', 
+    bio: 'A passionate developer specializing in scaling intelligent mobile experiences, robust web applications, and integrating next-gen AI capabilities. Dedicated to delivering premium software solutions.' 
   },
   { 
     name: 'Rahul', 
-    role: 'Full Stack Web Developer', 
+    role: 'Founder & Lead Engineer', 
     initial: 'R', 
-    bio: 'Architecting robust, high-performance web applications from the database to the front-end.' 
-  },
-  { 
-    name: 'Venki', 
-    role: 'App Developer', 
-    initial: 'V', 
-    bio: 'Creating seamless, beautifully designed cross-platform mobile solutions for our clients.' 
-  },
-  { 
-    name: 'Dharani', 
-    role: 'Test Engineer', 
-    initial: 'D', 
-    bio: 'Ensuring flawless execution and bulletproof code quality across all major product releases.' 
-  },
-  { 
-    name: 'JK', 
-    role: 'Client Success Manager', 
-    initial: 'J', 
-    bio: 'Bridging the gap between engineering excellence and the client’s strategic business vision.' 
-  },
+    bio: 'Architecting robust, high-performance web applications from the database to the front-end, ensuring a seamless user experience.' 
+  }
 ];
 
 export default function Team() {
@@ -42,9 +24,9 @@ export default function Team() {
       <div className="container">
         <ScrollReveal direction="up">
           <div className="text-center" style={{ maxWidth: '800px', margin: '0 auto 4rem' }}>
-            <h2>Meet The Team</h2>
+            <h2>About the Founders</h2>
             <p className="subtitle">
-              The elite engineers and visionaries behind our premium software solutions.
+              The engineers behind our premium software solutions.
             </p>
           </div>
         </ScrollReveal>

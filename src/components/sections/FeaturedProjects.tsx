@@ -9,23 +9,20 @@ export default function FeaturedProjects() {
   const projects = [
     {
       name: 'Nexus AI',
-      category: 'AI Platform',
-      result: 'Automated 80% of customer support workflows',
-      metrics: '+45% Efficiency',
+      category: 'AI Platform Concept',
+      description: 'A demonstration of customer support workflow automation.',
       image: '/projects/nexus-ai.png'
     },
     {
       name: 'PayFlow SaaS',
-      category: 'Fintech Web App',
-      result: 'Processed $10M+ in early transactions securely',
-      metrics: '0 Downtime',
+      category: 'Fintech Web App Concept',
+      description: 'A scalable transaction processing system showcase.',
       image: '/projects/payflow.png'
     },
     {
       name: 'HealthSync Mobile',
-      category: 'Healthcare App',
-      result: 'Connected 50,000+ patients with doctors',
-      metrics: '4.9 App Store Rating',
+      category: 'Healthcare App Concept',
+      description: 'A patient-doctor connectivity demonstration.',
       image: '/projects/healthsync.png'
     }
   ];
@@ -36,9 +33,9 @@ export default function FeaturedProjects() {
         <ScrollReveal direction="down">
           <div className={styles.header}>
             <div>
-              <h2>Featured Work</h2>
+              <h2>Concept Projects</h2>
               <p className="subtitle" style={{ margin: 0 }}>
-                Recent digital products we've engineered.
+                Technical demonstrations and sample builds.
               </p>
             </div>
             <Button variant="outline" className="hidden-mobile">View All Projects</Button>
@@ -61,10 +58,7 @@ export default function FeaturedProjects() {
                 <CardContent className={styles.content}>
                   <div className={styles.category}>{project.category}</div>
                   <h3 className={styles.title}>{project.name}</h3>
-                  <p className={styles.result}>{project.result}</p>
-                  <div className={styles.metric}>
-                    <span className={styles.metricIcon}>↗</span> {project.metrics}
-                  </div>
+                  <p className={styles.result}>{project.description}</p>
                 </CardContent>
               </Card>
             </ScrollReveal>

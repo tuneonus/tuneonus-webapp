@@ -5,7 +5,7 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 const models = [
   {
     title: 'MVP Launchpad',
-    description: 'Fixed-price, rapid development to get your startup idea to market in weeks.',
+    description: 'Fixed-price, rapid development to get your startup idea to market in weeks. Starting at $[X].',
     features: ['Fixed Price & Timeline', 'Core Feature Focus', 'UI/UX Design', 'Production Ready']
   },
   {

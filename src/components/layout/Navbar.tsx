@@ -52,7 +52,6 @@ export default function Navbar() {
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services', hasDropdown: true },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Resources', href: '#resources', hasDropdown: true },
     { name: 'Contact Us', href: '#contact-form' },
     { name: 'Careers', href: '#contact-form' },
   ];
