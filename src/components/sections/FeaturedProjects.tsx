@@ -31,7 +31,7 @@ export default function FeaturedProjects() {
   ];
 
   return (
-    <section id="work" className="section">
+    <section id="portfolio" className="section">
       <div className="container">
         <ScrollReveal direction="down">
           <div className={styles.header}>

@@ -41,15 +41,15 @@ export default function Footer() {
             <ul className={styles.linkList}>
               <li><Link href="#about">About</Link></li>
               <li><Link href="#services">Services</Link></li>
-              <li><Link href="#work">Work</Link></li>
-              <li><Link href="#contact">Contact</Link></li>
+              <li><Link href="#portfolio">Portfolio</Link></li>
+              <li><Link href="#contact-form">Contact</Link></li>
             </ul>
           </div>
 
           <div className={styles.linksCol}>
             <h4 className={styles.columnTitle}>Connect</h4>
             <ul className={styles.linkList}>
-              <li><a href="mailto:tuneounus@gmail.com">Email Us</a></li>
+              <li><a href="mailto:tuneonus@gmail.com">Email Us</a></li>
               <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
             </ul>

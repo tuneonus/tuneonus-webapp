@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import styles from './CTA.module.css';
 import { Button } from '../ui/Button';
@@ -15,7 +17,9 @@ export default function CTA() {
               Ready to transform your ideas into reality? Partner with TuneOnus to engineer the future.
             </p>
             <div className={styles.actions}>
-              <Button variant="primary" size="lg">Book Consultation</Button>
+              <Button variant="primary" size="lg" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
+                Book Consultation
+              </Button>
             </div>
           </ScrollReveal>
         </div>

@@ -31,7 +31,7 @@ export default function TermsOfService() {
         <section>
           <h2>4. Contact</h2>
           <p>
-            For any questions or concerns regarding these terms, please contact us at <strong>tuneounus@gmail.com</strong>.
+            For any questions or concerns regarding these terms, please contact us at <strong>tuneonus@gmail.com</strong>.
           </p>
         </section>
       </div>

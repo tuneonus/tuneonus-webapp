@@ -36,13 +36,25 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  const scrollToContact = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleMobileStartProject = () => {
+    setMobileMenuOpen(false);
+    setTimeout(() => {
+      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services', hasDropdown: true },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Resources', href: '#resources', hasDropdown: true },
-    { name: 'Contact Us', href: '#contact' },
-    { name: 'Careers', href: '#careers' },
+    { name: 'Contact Us', href: '#contact-form' },
+    { name: 'Careers', href: '#contact-form' },
   ];
 
   return (
@@ -82,7 +94,7 @@ export default function Navbar() {
             >
               {mounted && (theme === 'dark' ? '☀️' : '🌙')}
             </button>
-            <Button variant="primary">Start Project</Button>
+            <Button variant="primary" onClick={scrollToContact}>Start Project</Button>
           </div>
         </nav>
 
@@ -122,7 +134,7 @@ export default function Navbar() {
              >
                {mounted && (theme === 'dark' ? '☀️' : '🌙')}
              </button>
-             <Button variant="primary" style={{ flex: 1 }}>Start Project</Button>
+             <Button variant="primary" onClick={handleMobileStartProject} style={{ flex: 1 }}>Start Project</Button>
           </li>
         </ul>
       </div>

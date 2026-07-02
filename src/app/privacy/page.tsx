@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2>4. Contact Us</h2>
           <p>
-            If you have any questions about this Privacy Policy, please contact us at <strong>tuneounus@gmail.com</strong>.
+            If you have any questions about this Privacy Policy, please contact us at <strong>tuneonus@gmail.com</strong>.
           </p>
         </section>
       </div>

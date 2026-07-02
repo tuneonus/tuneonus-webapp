@@ -72,7 +72,7 @@ export default function Hero() {
           </p>
 
           <div className={styles.actions}>
-            <Button variant="primary" size="lg">Start Project</Button>
+            <Button variant="primary" size="lg" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>Start Project</Button>
           </div>
         </div>
 
