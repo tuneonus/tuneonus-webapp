@@ -1,19 +1,37 @@
 .solutions {
-  background-color: var(--hover-bg);
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--accent-color) 10%, transparent), transparent 40%),
+    var(--hover-bg);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+}
+
+.header {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: var(--accent-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1rem;
   margin-top: var(--spacing-lg);
 }
 
 @media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
 }
 
@@ -23,36 +41,113 @@
   }
 }
 
+.reveal,
 .item {
+  height: 100%;
+}
+
+.item {
+  position: relative;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  min-height: 250px;
   padding: 1.5rem;
-  background-color: var(--card-bg);
-  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--card-bg) 94%, transparent);
   border: 1px solid var(--border-color);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent-color) 50%, var(--border-color));
   box-shadow: var(--shadow-md);
 }
 
-.bullet {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--gradient-accent);
-  margin-top: 0.4rem;
-  flex-shrink: 0;
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color) 11%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-color) 24%, transparent);
+  border-radius: 14px;
+  transition: background var(--transition-base), transform var(--transition-base);
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.item:hover .icon {
+  background: color-mix(in srgb, var(--accent-color) 18%, transparent);
+  transform: rotate(-3deg) scale(1.04);
+}
+
+.number {
+  color: color-mix(in srgb, var(--text-muted) 58%, transparent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.content {
+  margin-top: auto;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .title {
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
 }
 
 .desc {
-  font-size: 0.9375rem;
   color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
+.accent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-accent);
+  transform: scaleX(0.22);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.item:hover .accent {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .icon,
+  .accent {
+    transition: none;
+  }
 }

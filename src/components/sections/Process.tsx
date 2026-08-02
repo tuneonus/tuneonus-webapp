@@ -4,43 +4,47 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function Process() {
   const steps = [
-    { title: 'Discover', desc: 'Understanding requirements and goals.' },
-    { title: 'Strategy', desc: 'Architecture and technical planning.' },
-    { title: 'Design', desc: 'UI/UX design and prototyping.' },
-    { title: 'Development', desc: 'Agile coding and implementation.' },
-    { title: 'Testing', desc: 'QA, security, and performance checks.' },
-    { title: 'Launch', desc: 'Deployment and production release.' },
-    { title: 'Scale', desc: 'Ongoing optimization and growth.' },
+    { title: 'Discover', desc: 'Clarify the product goal, users, requirements, and constraints.' },
+    { title: 'Strategy', desc: 'Define the scope, architecture, priorities, and delivery plan.' },
+    { title: 'Design', desc: 'Shape user flows, interfaces, and testable product prototypes.' },
+    { title: 'Development', desc: 'Build the product in focused, reviewable iterations.' },
+    { title: 'Testing', desc: 'Review functionality, accessibility, security, and performance.' },
+    { title: 'Launch', desc: 'Prepare the production release, deployment, and handoff.' },
+    { title: 'Improve', desc: 'Use feedback and product needs to guide the next iteration.' },
   ];
 
   return (
-    <section className={`section ${styles.process}`}>
+    <section id="process" className={`section ${styles.process}`}>
       <div className="container">
         <ScrollReveal direction="up">
-          <div className="text-center">
+          <div className={`text-center ${styles.header}`}>
+            <span className={styles.eyebrow}>How we work</span>
             <h2>Our Process</h2>
             <p className="subtitle">
-              A proven methodology for delivering robust software.
+              A practical path from early product decisions to launch and continuous improvement.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className={styles.timeline}>
+        <ol className={styles.timeline}>
           {steps.map((step, i) => (
-            <ScrollReveal key={i} delay={i * 0.1} direction="up">
-              <div className={styles.step}>
-                <div className={styles.dot}>
-                  <span className={styles.number}>{i + 1}</span>
-                </div>
-                <div className={styles.content}>
-                  <h4 className={styles.title}>{step.title}</h4>
-                  <p className={styles.desc}>{step.desc}</p>
-                </div>
-                {i < steps.length - 1 && <div className={styles.line}></div>}
-              </div>
-            </ScrollReveal>
+            <li key={step.title} className={styles.step}>
+              <ScrollReveal delay={i * 0.06} direction="up" className={styles.reveal}>
+                <article className={styles.card}>
+                  <div className={styles.cardTop}>
+                    <span className={styles.number}>{String(i + 1).padStart(2, '0')}</span>
+                    <span className={styles.stage}>Stage {i + 1}</span>
+                  </div>
+                  <div className={styles.content}>
+                    <h3 className={styles.title}>{step.title}</h3>
+                    <p className={styles.desc}>{step.desc}</p>
+                  </div>
+                  <span className={styles.progress} aria-hidden="true" />
+                </article>
+              </ScrollReveal>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

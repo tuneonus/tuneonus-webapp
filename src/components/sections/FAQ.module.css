@@ -1,0 +1,80 @@
+.container {
+  max-width: 900px;
+}
+.header {
+  margin-bottom: 3rem;
+}
+.eyebrow {
+  display: inline-block;
+  margin-bottom: .75rem;
+  color: var(--accent-color);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.list {
+  display: grid;
+  gap: 1rem;
+}
+
+.item {
+  padding: 0 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.item[open] {
+  border-color: color-mix(in srgb, var(--accent-color) 42%, var(--border-color));
+  box-shadow: var(--shadow-sm);
+}
+
+.item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.3rem 0;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.item summary::-webkit-details-marker { display: none; }
+.toggle {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 1.25rem;
+  color: var(--accent-color);
+}
+.toggle::before,
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: .8rem;
+  height: 2px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition-fast);
+}
+.toggle::after { transform: translate(-50%, -50%) rotate(90deg); }
+.item[open] .toggle::after { transform: translate(-50%, -50%) rotate(0); }
+
+.item summary:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+.item p {
+  margin: 0;
+  padding: 0 2.75rem 1.35rem 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+@media (prefers-reduced-motion: reduce) {
+  .item, .toggle::before, .toggle::after { transition: none; }
+}

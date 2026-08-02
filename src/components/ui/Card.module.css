@@ -3,7 +3,7 @@
   background-color: var(--card-bg);
   color: var(--text-color);
   overflow: hidden;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 /* Variants */

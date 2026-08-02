@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import styles from './AIAgents.module.css';
 import { Card, CardContent } from '../ui/Card';
@@ -8,7 +7,7 @@ export default function AIAgents() {
   const agents = [
     {
       title: 'Custom GPTs & LLMs',
-      description: 'Fine-tuned language models and conversational agents that understand your proprietary data and interact naturally with users.',
+      description: 'Language-model integrations and knowledge assistants designed to work with approved business content and defined user tasks.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -19,7 +18,7 @@ export default function AIAgents() {
     },
     {
       title: 'Autonomous Workflows',
-      description: 'Multi-agent systems that chain complex tasks together, making decisions and executing operations without human intervention.',
+      description: 'Agent workflows that coordinate multi-step tasks, call business tools, and route sensitive decisions for human review.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
@@ -31,7 +30,7 @@ export default function AIAgents() {
     },
     {
       title: 'Intelligent Data Analysts',
-      description: 'Agents that monitor databases, analyze trends in real-time, and generate actionable insights and reports automatically.',
+      description: 'Data assistants that help teams query approved sources, summarize findings, and prepare repeatable reports.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <line x1="18" y1="20" x2="18" y2="10"/>
@@ -42,8 +41,8 @@ export default function AIAgents() {
       color: '#10b981', // Emerald
     },
     {
-      title: '24/7 Operations',
-      description: 'Deploy AI agents that work around the clock, handling customer support, scheduling, and system monitoring continuously.',
+      title: 'Operational Assistants',
+      description: 'Assist with support triage, scheduling, document processing, and system workflows while preserving escalation paths.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"/>
@@ -62,7 +61,7 @@ export default function AIAgents() {
             <span className={styles.tag}>Next-Gen Tech</span>
             <h2>Autonomous AI Agents</h2>
             <p className="subtitle">
-              Move beyond simple chatbots. We build intelligent agentic systems that reason, learn, and execute complex business workflows autonomously.
+              Move beyond isolated chatbots with AI assistants and agent workflows connected to relevant data, tools, guardrails, and human review.
             </p>
           </div>
         </ScrollReveal>

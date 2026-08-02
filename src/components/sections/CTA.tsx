@@ -12,13 +12,13 @@ export default function CTA() {
         <div className={styles.card}>
           <div className={styles.glow}></div>
           <ScrollReveal direction="up" amount={0.5} className={styles.content}>
-            <h2>Let's Build Your Next Digital Product</h2>
+            <h2>Plan Your Next Software Product</h2>
             <p className={styles.subtitle}>
-              Ready to transform your ideas into reality? Partner with TuneOnus to engineer the future.
+              Tell us what you want to build, who it is for, and where you need technical support. We&apos;ll use that context to start a focused project discussion.
             </p>
             <div className={styles.actions}>
               <Button variant="primary" size="lg" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
-                Book Consultation
+                Discuss Your Project
               </Button>
             </div>
           </ScrollReveal>

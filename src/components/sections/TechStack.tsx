@@ -13,13 +13,17 @@ export default function TechStack() {
     <section className="section">
       <div className="container text-center">
         <ScrollReveal direction="down">
-          <h3 className={styles.title}>Powered by Modern Technologies</h3>
+          <div className={styles.header}>
+            <span className={styles.eyebrow}>Technology stack</span>
+            <h2>Tools Chosen for the Product</h2>
+            <p className="subtitle">Modern technologies selected around product requirements, maintainability, and the systems they need to support.</p>
+          </div>
         </ScrollReveal>
         <div className={styles.techList}>
           {techs.map((tech, i) => (
             <ScrollReveal key={i} direction="up" delay={i * 0.05}>
               <div className={styles.techBadge}>
-                {tech}
+                <span className={styles.dot} aria-hidden="true" />{tech}
               </div>
             </ScrollReveal>
           ))}

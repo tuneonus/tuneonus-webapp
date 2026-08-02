@@ -8,11 +8,17 @@ export default function ParticleBackground() {
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const mount = mountRef.current;
     if (!mount) return;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    } catch {
+      return;
+    }
     renderer.setSize(window.innerWidth, window.innerHeight);
     // Lower pixel ratio on mobile to drastically save battery/GPU
     renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
@@ -174,7 +180,11 @@ export default function ParticleBackground() {
 
       renderer.render(scene, camera);
     };
-    animate();
+    if (reduceMotion) {
+      renderer.render(scene, camera);
+    } else {
+      animate();
+    }
 
     const onResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -205,6 +215,7 @@ export default function ParticleBackground() {
         pointerEvents: 'none',
         opacity: 0.75,
       }}
+      aria-hidden="true"
     />
   );
 }

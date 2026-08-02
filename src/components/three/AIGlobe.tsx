@@ -9,6 +9,7 @@ export default function AIGlobe() {
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const width = mount.clientWidth;
     const height = mount.clientHeight;
@@ -21,7 +22,12 @@ export default function AIGlobe() {
     const isMobileSize = window.innerWidth < 768;
     camera.position.z = isMobileSize ? 2.1 : 2.8;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    } catch {
+      return;
+    }
     renderer.setSize(width, height);
     renderer.setPixelRatio(isMobileSize ? 1 : Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
@@ -135,7 +141,11 @@ export default function AIGlobe() {
       renderer.render(scene, camera);
     };
 
-    animate();
+    if (reduceMotion) {
+      renderer.render(scene, camera);
+    } else {
+      animate();
+    }
 
     // ── Resize ──────────────────────────────────────────────────────
     const handleResize = () => {
@@ -167,6 +177,7 @@ export default function AIGlobe() {
         width: '100%',
         height: '100%',
       }}
+      aria-hidden="true"
     />
   );
 }

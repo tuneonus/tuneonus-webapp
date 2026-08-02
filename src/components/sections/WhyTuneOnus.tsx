@@ -4,11 +4,11 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function WhyTuneOnus() {
   const reasons = [
-    { title: 'Fast Execution', text: 'We ship quality code rapidly without compromising on architecture.' },
+    { title: 'Focused Delivery', text: 'We organize delivery around agreed product goals, scope, and technical constraints.' },
     { title: 'Product Thinking', text: 'We focus on business metrics, user experience, and market fit, not just lines of code.' },
-    { title: 'Secure Architecture', text: 'Built-in security practices from day one to protect your data and users.' },
-    { title: 'Scalable Systems', text: 'Cloud-native infrastructure designed to handle millions of users.' },
-    { title: 'Clean UX', text: 'Beautiful, intuitive interfaces that delight users and drive conversion.' }
+    { title: 'Security-Aware Engineering', text: 'We consider authentication, permissions, data handling, and operational risks during implementation.' },
+    { title: 'Maintainable Systems', text: 'We design software with clear boundaries, practical documentation, and future change in mind.' },
+    { title: 'Clear User Experience', text: 'We aim for interfaces that make important tasks understandable and straightforward.' }
   ];
 
   return (
@@ -19,7 +19,7 @@ export default function WhyTuneOnus() {
             <ScrollReveal direction="right">
               <h2>Why Choose <span className="text-gradient">TuneOnus</span></h2>
               <p className="subtitle" style={{ marginLeft: 0 }}>
-                We're not just a development agency; we're your technical co-founders.
+                TuneOnus combines product thinking with practical software engineering.
               </p>
             </ScrollReveal>
             
@@ -33,7 +33,7 @@ export default function WhyTuneOnus() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className={styles.itemTitle}>{reason.title}</h4>
+                      <h3 className={styles.itemTitle}>{reason.title}</h3>
                       <p className={styles.itemText}>{reason.text}</p>
                     </div>
                   </div>

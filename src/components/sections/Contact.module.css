@@ -1,9 +1,91 @@
 .contactSection {
-  background-color: var(--bg-alt);
+  background:
+    radial-gradient(circle at 0% 50%, color-mix(in srgb, var(--accent-color) 8%, transparent), transparent 38%),
+    var(--bg-alt);
+}
+.header {
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.eyebrow,
+.guideLabel {
+  display: inline-block;
+  margin-bottom: .75rem;
+  color: var(--accent-color);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+.reveal { height: 100%; }
+@media (min-width: 820px) {
+  .layout {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+}
+.guide {
+  position: relative;
+  height: 100%;
+  padding: 2rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--accent-color) 8%, var(--card-bg));
+  border: 1px solid color-mix(in srgb, var(--accent-color) 24%, var(--border-color));
+  border-radius: var(--radius-lg);
+}
+.guide h3 {
+  max-width: 340px;
+  margin-bottom: .75rem;
+  font-size: 1.5rem;
+}
+.guide > p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.guide ul {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+.guide li {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  color: var(--text-color);
+  font-size: .925rem;
+  line-height: 1.5;
+}
+.guide li span {
+  color: var(--accent-color);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  padding-top: .2rem;
+}
+.emailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+.emailLink:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
 }
 .formContainer {
-  max-width: 600px;
-  margin: 0 auto;
+  height: 100%;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
@@ -52,7 +134,7 @@
 .submitContainer {
   margin-top: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .successMessage {
   text-align: center;

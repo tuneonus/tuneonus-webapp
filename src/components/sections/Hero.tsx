@@ -1,46 +1,22 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './Hero.module.css';
 import { Button } from '../ui/Button';
+import { canUseWebGL } from '../../lib/webgl';
 
 const AIGlobe = dynamic(() => import('../three/AIGlobe'), { ssr: false });
 
 export default function Hero() {
-  const [text, setText] = useState('');
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [showGlobe, setShowGlobe] = useState(false);
 
-  const phrases = ['AI Products', 'Web Applications', 'Mobile Apps', 'SaaS Platforms'];
-
   useEffect(() => {
-    // Always show globe
-    setShowGlobe(true);
+    if (!canUseWebGL()) return;
+    const delay = window.innerWidth < 768 ? 2500 : 500;
+    const timer = window.setTimeout(() => setShowGlobe(true), delay);
+    return () => window.clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    const currentPhrase = phrases[phraseIndex];
-    const typeSpeed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && text === currentPhrase) {
-      const timeout = setTimeout(() => setIsDeleting(true), 2000);
-      return () => clearTimeout(timeout);
-    }
-
-    if (isDeleting && text === '') {
-      setIsDeleting(false);
-      setPhraseIndex((prev) => (prev + 1) % phrases.length);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setText(currentPhrase.slice(0, text.length + (isDeleting ? -1 : 1)));
-    }, typeSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, phraseIndex]);
 
   return (
     <section className={styles.hero}>
@@ -57,28 +33,21 @@ export default function Hero() {
           </div>
 
           <h1 className={styles.title}>
-            Build Intelligent{' '}
-            <span className={styles.typewriterWrapper}>
-              <span className={styles.hiddenText} aria-hidden="true">Web Applications</span>
-              <span className={styles.typingText}>
-                <span className="text-gradient">{text}</span>
-                <span className={styles.cursor}>|</span>
-              </span>
-            </span>
+            Build Intelligent <span className="text-gradient">AI Products &amp; Custom Software</span>
           </h1>
 
           <p className={styles.subtitle}>
-            We design and develop AI-powered products, scalable web &amp; mobile applications, and modern software solutions.
+            TuneOnus is a software development company building custom AI products, web and mobile applications, SaaS platforms, and the backend systems that support them.
           </p>
 
           <div className={styles.actions}>
-            <Button variant="primary" size="lg" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>Start Project</Button>
+            <Button variant="primary" size="lg" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>Discuss Your Project</Button>
           </div>
         </div>
 
         {/* 3D AI Globe — hidden on mobile via CSS */}
         <div className={styles.globeWrapper}>
-          <AIGlobe />
+          {showGlobe && <AIGlobe />}
         </div>
       </div>
     </section>

@@ -13,6 +13,8 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
   // Prevent hydration mismatch for icon rendering
   const [mounted, setMounted] = useState(false);
+  // The theme value is stored in the browser; defer its icon until hydration.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
@@ -20,7 +22,8 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -38,22 +41,32 @@ export default function Navbar() {
 
   const scrollToContact = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
-    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.assign('/#contact-form');
+    }
   };
 
   const handleMobileStartProject = () => {
     setMobileMenuOpen(false);
     setTimeout(() => {
-      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.assign('/#contact-form');
+      }
     }, 100);
   };
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services', hasDropdown: true },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact Us', href: '#contact-form' },
-    { name: 'Careers', href: '#contact-form' },
+    { name: 'About', href: '/#about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Portfolio', href: '/#portfolio' },
+    { name: 'FAQ', href: '/#faq' },
+    { name: 'Contact Us', href: '/#contact-form' },
   ];
 
   return (
@@ -62,7 +75,7 @@ export default function Navbar() {
         <Link href="/" className={styles.logo}>
           <Image 
             src="/brand-logo-white.svg" 
-            alt="TuneOnus Logo" 
+            alt="TuneOnus"
             width={230} 
             height={56} 
             priority 
@@ -76,11 +89,6 @@ export default function Navbar() {
               <li key={link.name}>
                 <Link href={link.href} className={styles.navLink}>
                   {link.name}
-                  {link.hasDropdown && (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.dropdownIcon}>
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                  )}
                 </Link>
               </li>
             ))}
@@ -93,7 +101,7 @@ export default function Navbar() {
             >
               {mounted && (theme === 'dark' ? '☀️' : '🌙')}
             </button>
-            <Button variant="primary" onClick={scrollToContact}>Start Project</Button>
+            <Button variant="primary" onClick={scrollToContact}>Discuss Your Project</Button>
           </div>
         </nav>
 
@@ -102,13 +110,15 @@ export default function Navbar() {
           className={styles.mobileToggle}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle Menu"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
         >
           <span className={`${styles.hamburger} ${mobileMenuOpen ? styles.active : ''}`}></span>
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+      <div id="mobile-navigation" className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
         <ul className={styles.mobileNavLinks}>
           {navLinks.map((link) => (
             <li key={link.name}>
@@ -133,7 +143,7 @@ export default function Navbar() {
              >
                {mounted && (theme === 'dark' ? '☀️' : '🌙')}
              </button>
-             <Button variant="primary" onClick={handleMobileStartProject} style={{ flex: 1 }}>Start Project</Button>
+             <Button variant="primary" onClick={handleMobileStartProject} style={{ flex: 1 }}>Discuss Project</Button>
           </li>
         </ul>
       </div>

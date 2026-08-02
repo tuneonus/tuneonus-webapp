@@ -1,14 +1,14 @@
-'use client';
 import React from 'react';
 import styles from './Services.module.css';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
 import { ScrollReveal } from '../ui/ScrollReveal';
+import Link from 'next/link';
 
 export default function Services() {
   const services = [
     {
       title: 'AI Development',
-      description: 'Custom AI models, machine learning algorithms, and intelligent automation tailored to your business needs.',
+      description: 'Add practical AI capabilities to new or existing products, including LLM integrations, knowledge assistants, data workflows, and task automation.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 0 6h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1 0-6h1V6a4 4 0 0 1 4-4z"/>
@@ -18,10 +18,11 @@ export default function Services() {
         </svg>
       ),
       color: '#8b5cf6',
+      href: '/services/ai-development',
     },
     {
       title: 'Web Application Development',
-      description: 'Scalable, high-performance web applications built with modern frameworks like React and Next.js.',
+      description: 'Build responsive web applications, customer portals, dashboards, and internal tools with maintainable frontend and backend architecture.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="16 18 22 12 16 6"/>
@@ -30,10 +31,11 @@ export default function Services() {
         </svg>
       ),
       color: '#06b6d4',
+      href: '/services/web-development',
     },
     {
       title: 'SaaS Product Development',
-      description: 'End-to-end SaaS development from architecture and multi-tenancy to deployment and scaling.',
+      description: 'Plan and build SaaS products with account workflows, role-based access, subscriptions, integrations, and multi-tenant architecture where required.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 2L2 7l10 5 10-5-10-5z"/>
@@ -42,10 +44,11 @@ export default function Services() {
         </svg>
       ),
       color: '#10b981',
+      href: '/services/saas-development',
     },
     {
       title: 'Mobile App Development',
-      description: 'Native and cross-platform mobile experiences that users love, built with React Native.',
+      description: 'Create cross-platform mobile applications with thoughtful user flows, API integration, device capabilities, testing, and release support.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
@@ -53,20 +56,22 @@ export default function Services() {
         </svg>
       ),
       color: '#f59e0b',
+      href: '/services/mobile-development',
     },
     {
       title: 'Cloud & Backend Engineering',
-      description: 'Robust, secure, and scalable backend systems deployed on AWS, GCP, or Azure.',
+      description: 'Engineer APIs, databases, authentication, integrations, and cloud infrastructure for reliable web, mobile, and AI-enabled products.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
         </svg>
       ),
       color: '#3b82f6',
+      href: '/services/backend-api-development',
     },
     {
       title: 'Automation & Integrations',
-      description: 'Streamline your operations with custom workflows and API integrations.',
+      description: 'Connect business systems and reduce repetitive work with custom workflows, API integrations, data synchronization, and human approval steps.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3"/>
@@ -74,6 +79,7 @@ export default function Services() {
         </svg>
       ),
       color: '#ec4899',
+      href: '/services/ai-agent-development',
     },
   ];
 
@@ -84,7 +90,7 @@ export default function Services() {
           <div className="text-center">
             <h2>Our Services</h2>
             <p className="subtitle">
-              Comprehensive engineering solutions to transform your ideas into reality.
+              Product engineering from early technical planning through implementation, integration, testing, and launch support.
             </p>
           </div>
         </ScrollReveal>
@@ -92,17 +98,20 @@ export default function Services() {
         <div className={styles.grid}>
           {services.map((service, index) => (
             <ScrollReveal key={index} delay={index * 0.1} direction="up">
-              <Card hoverEffect={true} className={styles.card}>
-                <CardHeader>
-                  <div className={styles.iconWrapper} style={{ '--icon-color': service.color } as React.CSSProperties}>
-                    {service.icon}
-                  </div>
-                  <CardTitle>{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className={styles.description}>{service.description}</p>
-                </CardContent>
-              </Card>
+              <Link href={service.href} className={styles.cardLink} aria-label={`Explore ${service.title}`}>
+                <Card hoverEffect={true} className={styles.card}>
+                  <CardHeader>
+                    <div className={styles.iconWrapper} style={{ '--icon-color': service.color } as React.CSSProperties}>
+                      {service.icon}
+                    </div>
+                    <CardTitle>{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className={styles.description}>{service.description}</p>
+                    <span className={styles.explore}>Explore service <span aria-hidden="true">→</span></span>
+                  </CardContent>
+                </Card>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

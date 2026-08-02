@@ -9,6 +9,7 @@ export default function FooterWave() {
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const w = mount.clientWidth;
     const h = mount.clientHeight;
@@ -19,7 +20,12 @@ export default function FooterWave() {
     camera.lookAt(0, 0, 0);
 
     const isMobile = w < 768;
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    } catch {
+      return;
+    }
     renderer.setSize(w, h);
     renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
@@ -81,7 +87,11 @@ export default function FooterWave() {
 
       renderer.render(scene, camera);
     };
-    animate();
+    if (reduceMotion) {
+      renderer.render(scene, camera);
+    } else {
+      animate();
+    }
 
     const onResize = () => {
       const nw = mount.clientWidth;
@@ -112,6 +122,7 @@ export default function FooterWave() {
         pointerEvents: 'none',
         zIndex: 0,
       }}
+      aria-hidden="true"
     />
   );
 }

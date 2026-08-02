@@ -5,7 +5,7 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 const models = [
   {
     title: 'MVP Launchpad',
-    description: 'Fixed-price, rapid development to get your startup idea to market in weeks. Starting at $[X].',
+    description: 'Fixed-scope development focused on getting the core of your startup idea ready for market.',
     features: ['Fixed Price & Timeline', 'Core Feature Focus', 'UI/UX Design', 'Production Ready']
   },
   {
@@ -25,7 +25,8 @@ export default function EngagementModels() {
     <section id="engagement" className="section bg-secondary">
       <div className="container">
         <ScrollReveal>
-          <div className="section-header text-center">
+          <div className={`section-header text-center ${styles.header}`}>
+            <span className={styles.eyebrow}>Ways to collaborate</span>
             <h2>How We Work With You</h2>
             <p className="section-subtitle">Flexible engagement models tailored to your business needs.</p>
           </div>
@@ -33,15 +34,21 @@ export default function EngagementModels() {
         <div className={styles.grid}>
           {models.map((model, i) => (
             <ScrollReveal key={i} delay={i * 0.1} direction="up">
-              <div className={styles.card}>
-                <h3 className={styles.title}>{model.title}</h3>
-                <p className={styles.description}>{model.description}</p>
+              <article className={styles.card}>
+                <div className={styles.cardTop}>
+                  <span className={styles.number}>{String(i + 1).padStart(2, '0')}</span>
+                  <span className={styles.line} aria-hidden="true" />
+                </div>
+                <div className={styles.cardContent}>
+                  <h3 className={styles.title}>{model.title}</h3>
+                  <p className={styles.description}>{model.description}</p>
+                </div>
                 <ul className={styles.features}>
                   {model.features.map((feature, idx) => (
-                    <li key={idx}>✓ {feature}</li>
+                    <li key={idx}><span className={styles.check} aria-hidden="true">✓</span>{feature}</li>
                   ))}
                 </ul>
-              </div>
+              </article>
             </ScrollReveal>
           ))}
         </div>

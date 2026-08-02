@@ -1,22 +1,31 @@
-.title {
-  color: var(--text-muted);
-  font-size: 1rem;
+.header {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.eyebrow {
+  display: inline-block;
+  margin-bottom: .75rem;
+  color: var(--accent-color);
+  font-size: .75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 2rem;
+  letter-spacing: .14em;
 }
 
 .techList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: .75rem;
+  max-width: 900px;
+  margin: 3rem auto 0;
 }
 
 .techBadge {
-  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .8rem 1.15rem;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-full);
@@ -24,8 +33,18 @@
   font-size: 0.9375rem;
   color: var(--text-color);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   cursor: default;
+}
+.dot {
+  width: .45rem;
+  height: .45rem;
+  background: var(--gradient-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-color) 10%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .techBadge { transition: none; }
 }
 
 .techBadge:hover {

@@ -18,7 +18,10 @@ export default function Contact() {
     setErrorMsg('');
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      if (!apiUrl) {
+        throw new Error('Online form delivery is not configured. Please email tuneonus@gmail.com.');
+      }
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
@@ -36,10 +39,10 @@ export default function Contact() {
       setName('');
       setEmail('');
       setMessage('');
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Submission error:', err);
       setStatus('error');
-      setErrorMsg(err.message || 'Unable to submit your message at this time.');
+      setErrorMsg(err instanceof Error ? err.message : 'Unable to submit your message at this time.');
     }
   };
 
@@ -47,27 +50,44 @@ export default function Contact() {
     <section id="contact-form" className={`section ${styles.contactSection}`}>
       <div className="container">
         <ScrollReveal>
-          <div className="section-header text-center">
-            <h2>Get In Touch</h2>
+          <div className={`section-header text-center ${styles.header}`}>
+            <span className={styles.eyebrow}>Start a conversation</span>
+            <h2>Discuss Your Software Project</h2>
             <p className="section-subtitle">
-              Have a project in mind? Let's discuss how we can help.
+              Share your product goal, current stage, key users, and the technical help you need. You can also email us directly at{' '}
+              <a href="mailto:tuneonus@gmail.com">tuneonus@gmail.com</a>.
             </p>
           </div>
         </ScrollReveal>
         
-        <ScrollReveal direction="up">
+        <div className={styles.layout}>
+          <ScrollReveal direction="right" className={styles.reveal}>
+            <aside className={styles.guide} aria-labelledby="contact-guide-title">
+              <span className={styles.guideLabel}>A useful starting point</span>
+              <h3 id="contact-guide-title">Help us understand the project</h3>
+              <p>You do not need a complete specification. A short outline of these details is enough to begin.</p>
+              <ul>
+                <li><span>01</span>Your product goal and intended users</li>
+                <li><span>02</span>The current product or project stage</li>
+                <li><span>03</span>The technical support you need</li>
+              </ul>
+              <a className={styles.emailLink} href="mailto:tuneonus@gmail.com">tuneonus@gmail.com <span aria-hidden="true">→</span></a>
+            </aside>
+          </ScrollReveal>
+          <ScrollReveal direction="left" className={styles.reveal}>
           <div className={styles.formContainer}>
             {status === 'success' ? (
               <div className={styles.successMessage}>
                 <h3>Thank you!</h3>
-                <p>We'll be in touch with you shortly.</p>
+                <p>We&apos;ll be in touch with you shortly.</p>
                 <Button onClick={() => setStatus('idle')} variant="outline">Send another message</Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className={styles.form}>
+              <form onSubmit={handleSubmit} className={styles.form} aria-busy={status === 'submitting'}>
                 {status === 'error' && (
-                  <div className={styles.errorMessage}>
-                    {errorMsg}
+                  <div className={styles.errorMessage} role="alert">
+                    {errorMsg}{' '}
+                    <a href="mailto:tuneonus@gmail.com">Email TuneOnus</a>
                   </div>
                 )}
                 
@@ -103,7 +123,7 @@ export default function Contact() {
                     id="message" 
                     rows={5} 
                     required 
-                    placeholder="Tell us about your project..." 
+                    placeholder="What are you building, who is it for, and what support do you need?"
                     className={styles.input}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -118,7 +138,8 @@ export default function Contact() {
               </form>
             )}
           </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );

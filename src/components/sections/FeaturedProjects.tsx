@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './FeaturedProjects.module.css';
 import { Card, CardContent } from '../ui/Card';
-import { Button } from '../ui/Button';
 import { ScrollReveal } from '../ui/ScrollReveal';
 
 export default function FeaturedProjects() {
@@ -10,20 +9,20 @@ export default function FeaturedProjects() {
     {
       name: 'Nexus AI',
       category: 'AI Platform Concept',
-      description: 'A demonstration of customer support workflow automation.',
-      image: '/projects/nexus-ai.png'
+      description: 'A concept interface exploring how customer questions, knowledge retrieval, and support workflow automation could work together.',
+      image: '/projects/nexus-ai.webp'
     },
     {
       name: 'PayFlow SaaS',
       category: 'Fintech Web App Concept',
-      description: 'A scalable transaction processing system showcase.',
-      image: '/projects/payflow.png'
+      description: 'A fintech SaaS concept focused on transaction visibility, account workflows, and operational dashboards.',
+      image: '/projects/payflow.webp'
     },
     {
       name: 'HealthSync Mobile',
       category: 'Healthcare App Concept',
-      description: 'A patient-doctor connectivity demonstration.',
-      image: '/projects/healthsync.png'
+      description: 'A mobile product concept exploring patient communication, appointment workflows, and access to care information.',
+      image: '/projects/healthsync.webp'
     }
   ];
 
@@ -35,10 +34,9 @@ export default function FeaturedProjects() {
             <div>
               <h2>Concept Projects</h2>
               <p className="subtitle" style={{ margin: 0 }}>
-                Technical demonstrations and sample builds.
+                Technical demonstrations that show product thinking and interface direction. These are concepts, not client case studies.
               </p>
             </div>
-            <Button variant="outline" className="hidden-mobile">View All Projects</Button>
           </div>
         </ScrollReveal>
 
@@ -51,6 +49,7 @@ export default function FeaturedProjects() {
                     src={project.image} 
                     alt={project.name} 
                     fill
+                    loading="lazy"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className={styles.projectImage}
                   />
@@ -65,9 +64,6 @@ export default function FeaturedProjects() {
           ))}
         </div>
         
-        <div className={styles.mobileAction}>
-          <Button variant="outline" style={{ width: '100%' }}>View All Projects</Button>
-        </div>
       </div>
     </section>
   );

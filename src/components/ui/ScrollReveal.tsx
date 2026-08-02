@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'framer-motion';
+import styles from './ScrollReveal.module.css';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -15,36 +13,14 @@ export function ScrollReveal({
   children, 
   className = '', 
   delay = 0,
-  direction = 'up',
-  amount = 0.2
+  direction = 'up'
 }: ScrollRevealProps) {
-  
-  const getDirectionOffset = () => {
-    switch (direction) {
-      case 'up': return { y: 40, x: 0 };
-      case 'down': return { y: -40, x: 0 };
-      case 'left': return { x: 40, y: 0 };
-      case 'right': return { x: -40, y: 0 };
-      case 'none': return { x: 0, y: 0 };
-      default: return { y: 40, x: 0 };
-    }
-  };
-
-  const offset = getDirectionOffset();
-
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, amount }}
-      transition={{
-        duration: 0.7,
-        ease: 'easeOut',
-        delay: delay
-      }}
+    <div
+      className={`${styles.reveal} ${styles[direction]} ${className}`}
+      style={{ '--reveal-delay': `${delay}s` } as React.CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

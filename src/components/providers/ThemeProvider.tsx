@@ -18,6 +18,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Load theme from localStorage if available
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     if (savedTheme) {
+      // Theme preference is an external browser value loaded after hydration.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setThemeState(savedTheme);
     }
   }, []);

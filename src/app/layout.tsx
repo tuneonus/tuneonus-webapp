@@ -1,43 +1,45 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google"; 
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/providers/ThemeProvider";
 import { ScrollProgress } from "../components/ui/ScrollProgress";
 import { Analytics } from "@vercel/analytics/react";
-import ParticleBackgroundClient from "../components/three/ParticleBackgroundClient";
+import { siteConfig } from "../lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.tuneonus.com"),
-  title: "TuneOnus | Premium AI  & Software Engineering",
-  description: "TuneOnus is an AI, Web & App Development, and Software Engineering company that builds intelligent digital products, SaaS platforms, and scalable business software.",
-  keywords: ["AI Development", "Web Apps", "App Development", "Mobile Apps", "SaaS", "Software Engineering", "React", "Next.js"],
-  alternates: {
-    canonical: "/",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "TuneOnus | AI & Software Development Company",
+    template: "%s | TuneOnus",
   },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "technology",
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: "/icon.svg",
+    shortcut: "/icon.svg",
   },
   openGraph: {
-    title: "TuneOnus | Premium AI  & Software Engineering",
-    description: "TuneOnus is an AI, Web & App Development, and Software Engineering company that builds intelligent digital products.",
-    url: "https://www.tuneonus.com",
-    siteName: "TuneOnus",
+    title: "TuneOnus | AI & Software Development Company",
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "TuneOnus - Tune The Future",
+        url: siteConfig.ogImage,
+        width: 1024,
+        height: 1024,
+        alt: "TuneOnus — Tune The Future",
+        type: "image/jpeg",
       }
     ],
     locale: "en_US",
@@ -45,14 +47,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TuneOnus | Premium AI  & Software Engineering",
-    description: "TuneOnus is an AI, Web App Development, and Software Engineering company.",
-    images: ["/og-image.png"],
+    title: "TuneOnus | AI & Software Development Company",
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#080610" },
+  ],
 };
 
 export default function RootLayout({
@@ -61,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={geistSans.variable} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -82,10 +94,9 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <ParticleBackgroundClient />
           <ScrollProgress />
           {children}
-          <Analytics />
+          {process.env.VERCEL ? <Analytics /> : null}
         </ThemeProvider>
       </body>
     </html>

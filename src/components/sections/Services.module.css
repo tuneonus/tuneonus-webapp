@@ -30,6 +30,25 @@
   flex-direction: column;
 }
 
+.cardLink {
+  display: block;
+  height: 100%;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+.explore {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent-color);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
 .iconWrapper {
   width: 56px;
   height: 56px;
