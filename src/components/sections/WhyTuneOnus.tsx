@@ -17,6 +17,7 @@ export default function WhyTuneOnus() {
         <div className={styles.wrapper}>
           <div className={styles.content}>
             <ScrollReveal direction="right">
+              <span className={styles.eyebrow}>Engineering principles</span>
               <h2>Why Choose <span className="text-gradient">TuneOnus</span></h2>
               <p className="subtitle" style={{ marginLeft: 0 }}>
                 TuneOnus combines product thinking with practical software engineering.
@@ -44,9 +45,29 @@ export default function WhyTuneOnus() {
           <div className={styles.visual}>
             <ScrollReveal direction="left" delay={0.3}>
               <div className={styles.visualElement}>
-                <div className={styles.glow}></div>
-                <div className={styles.abstractShape1}></div>
-                <div className={styles.abstractShape2}></div>
+                <div className={styles.visualHeader}>
+                  <span>Product engineering</span>
+                  <span className={styles.status}><i aria-hidden="true" /> Built for change</span>
+                </div>
+                <div className={styles.flow}>
+                  <div className={styles.flowItem}>
+                    <span className={styles.flowNumber}>01</span>
+                    <div><strong>Understand</strong><small>Goals, users and constraints</small></div>
+                  </div>
+                  <span className={styles.connector} aria-hidden="true" />
+                  <div className={styles.flowItem}>
+                    <span className={styles.flowNumber}>02</span>
+                    <div><strong>Engineer</strong><small>Clear, secure product systems</small></div>
+                  </div>
+                  <span className={styles.connector} aria-hidden="true" />
+                  <div className={styles.flowItem}>
+                    <span className={styles.flowNumber}>03</span>
+                    <div><strong>Improve</strong><small>Maintain and evolve the product</small></div>
+                  </div>
+                </div>
+                <div className={styles.visualFooter}>
+                  <span>Product thinking</span><span>Practical delivery</span>
+                </div>
               </div>
             </ScrollReveal>
           </div>

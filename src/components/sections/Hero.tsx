@@ -13,7 +13,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (!canUseWebGL()) return;
-    const delay = window.innerWidth < 768 ? 2500 : 500;
+    const delay = window.innerWidth < 768 ? 150 : 500;
     const timer = window.setTimeout(() => setShowGlobe(true), delay);
     return () => window.clearTimeout(timer);
   }, []);
@@ -45,7 +45,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 3D AI Globe — hidden on mobile via CSS */}
+        {/* Responsive 3D AI globe */}
         <div className={styles.globeWrapper}>
           {showGlobe && <AIGlobe />}
         </div>

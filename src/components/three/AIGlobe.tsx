@@ -20,7 +20,8 @@ export default function AIGlobe() {
     // Camera
     const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
     const isMobileSize = window.innerWidth < 768;
-    camera.position.z = isMobileSize ? 2.1 : 2.8;
+    // Keep the complete sphere inside narrow mobile canvases with comfortable edge space.
+    camera.position.z = isMobileSize ? 2.55 : 2.8;
 
     let renderer: THREE.WebGLRenderer;
     try {
@@ -176,6 +177,7 @@ export default function AIGlobe() {
       style={{
         width: '100%',
         height: '100%',
+        overflow: 'visible',
       }}
       aria-hidden="true"
     />
