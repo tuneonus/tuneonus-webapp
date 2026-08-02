@@ -73,13 +73,8 @@ export default function Navbar() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.navContainer}`}>
         <Link href="/" className={styles.logo}>
-          <Image 
-            src="/brand-logo-white.svg" 
-            alt="TuneOnus"
-            width={230} 
-            height={56} 
-            priority 
-          />
+          <Image src="/icon.svg" alt="" width={38} height={38} priority className={styles.logoMark} />
+          <span className={styles.logoText}>Tune<span>Onus</span></span>
         </Link>
 
         {/* Desktop Nav */}

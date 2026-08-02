@@ -4,20 +4,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import styles from './Footer.module.css';
-import { useTheme } from '../providers/ThemeProvider';
 import { canUseWebGL } from '../../lib/webgl';
 
 const FooterWave = dynamic(() => import('../three/FooterWave'), { ssr: false });
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [showWave, setShowWave] = useState(false);
   const footerRef = React.useRef<HTMLElement>(null);
-  // The theme value is stored in the browser; defer the theme-specific logo.
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => setMounted(true), []);
   useEffect(() => {
     const footer = footerRef.current;
     if (!footer || !canUseWebGL()) return;
@@ -39,13 +33,8 @@ export default function Footer() {
           {/* Brand Column */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
-              <Image 
-                src={mounted && theme === 'light' ? "/brand-logo.svg" : "/brand-logo-white.svg"} 
-                alt="TuneOnus"
-                width={230} 
-                height={48} 
-                className={styles.logoImage} 
-              />
+              <Image src="/icon.svg" alt="" width={42} height={42} className={styles.logoIcon} />
+              <span className={styles.logoText}>Tune<span>Onus</span></span>
             </Link>
             <p className={styles.description}>
               Custom AI product, web application, mobile app, SaaS, automation, and backend development.
