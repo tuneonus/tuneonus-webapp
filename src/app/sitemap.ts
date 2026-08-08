@@ -12,7 +12,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
+    { url: absoluteUrl('/apps'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: absoluteUrl('/apps/paisiq'), changeFrequency: 'yearly', priority: 0.3 },
     { url: absoluteUrl('/privacy'), changeFrequency: 'yearly', priority: 0.2 },
+    { url: absoluteUrl('/privacy/paisiq'), changeFrequency: 'yearly', priority: 0.2 },
     { url: absoluteUrl('/terms'), changeFrequency: 'yearly', priority: 0.2 },
   ];
 }

@@ -37,7 +37,7 @@ export default function Hero() {
           </h1>
 
           <p className={styles.subtitle}>
-            TuneOnus is a software development company building custom AI products, web and mobile applications, SaaS platforms, and the backend systems that support them.
+            TuneOnus is a developer brand building custom AI products, web and mobile applications, SaaS platforms, and the backend systems that support them.
           </p>
 
           <div className={styles.actions}>

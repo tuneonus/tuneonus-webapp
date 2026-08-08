@@ -20,7 +20,7 @@ export default function Contact() {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       if (!apiUrl) {
-        throw new Error('Online form delivery is not configured. Please email tuneonus@gmail.com.');
+        throw new Error('Online form delivery is not configured. Please email support@tuneonus.com.');
       }
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
@@ -55,7 +55,7 @@ export default function Contact() {
             <h2>Discuss Your Software Project</h2>
             <p className="section-subtitle">
               Share your product goal, current stage, key users, and the technical help you need. You can also email us directly at{' '}
-              <a href="mailto:tuneonus@gmail.com">tuneonus@gmail.com</a>.
+              <a href="mailto:support@tuneonus.com">support@tuneonus.com</a>.
             </p>
           </div>
         </ScrollReveal>
@@ -71,7 +71,7 @@ export default function Contact() {
                 <li><span>02</span>The current product or project stage</li>
                 <li><span>03</span>The technical support you need</li>
               </ul>
-              <a className={styles.emailLink} href="mailto:tuneonus@gmail.com">tuneonus@gmail.com <span aria-hidden="true">→</span></a>
+              <a className={styles.emailLink} href="mailto:support@tuneonus.com">support@tuneonus.com <span aria-hidden="true">→</span></a>
             </aside>
           </ScrollReveal>
           <ScrollReveal direction="left" className={styles.reveal}>
@@ -87,7 +87,7 @@ export default function Contact() {
                 {status === 'error' && (
                   <div className={styles.errorMessage} role="alert">
                     {errorMsg}{' '}
-                    <a href="mailto:tuneonus@gmail.com">Email TuneOnus</a>
+                    <a href="mailto:support@tuneonus.com">Email TuneOnus</a>
                   </div>
                 )}
                 

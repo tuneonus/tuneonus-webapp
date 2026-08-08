@@ -50,7 +50,7 @@ export default function TermsOfService() {
         <section>
           <h2>4. Contact</h2>
           <p>
-            For questions or concerns regarding these terms, email us at <a href="mailto:tuneonus@gmail.com">tuneonus@gmail.com</a>.
+            For questions or concerns regarding these terms, email us at <a href="mailto:support@tuneonus.com">support@tuneonus.com</a>.
           </p>
         </section>
       </div>

@@ -47,6 +47,7 @@ export default function Footer() {
             <ul className={styles.linkList}>
               <li><Link href="/#about">About</Link></li>
               <li><Link href="/services">Services</Link></li>
+              <li><Link href="/apps">Apps</Link></li>
               <li><Link href="/#portfolio">Portfolio</Link></li>
               <li><Link href="/#faq">FAQ</Link></li>
               <li><Link href="/#contact-form">Contact</Link></li>
@@ -56,7 +57,7 @@ export default function Footer() {
           <div className={styles.linksCol}>
             <h2 className={styles.columnTitle}>Connect</h2>
             <ul className={styles.linkList}>
-              <li><a href="mailto:tuneonus@gmail.com">Email Us</a></li>
+              <li><a href="mailto:support@tuneonus.com">Email Us</a></li>
             </ul>
           </div>
         </div>

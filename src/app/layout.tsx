@@ -14,7 +14,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "TuneOnus | AI & Software Development Company",
+    default: "TuneOnus | AI & Software Development",
     template: "%s | TuneOnus",
   },
   description: siteConfig.description,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TuneOnus | AI & Software Development Company",
+    title: "TuneOnus | AI & Software Development",
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },

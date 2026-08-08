@@ -50,7 +50,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2>4. Contact Us</h2>
           <p>
-            If you have any questions about this Privacy Policy, email us at <a href="mailto:tuneonus@gmail.com">tuneonus@gmail.com</a>.
+            If you have any questions about this Privacy Policy, email us at <a href="mailto:support@tuneonus.com">support@tuneonus.com</a>.
           </p>
         </section>
       </div>
