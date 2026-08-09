@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  padding: 6.5rem 0 0.5rem;
+  padding: 5rem 0 0.5rem;
 }
 
 @media (min-width: 768px) {
@@ -146,7 +146,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-color);
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -165,7 +165,7 @@
 }
 
 .title {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   min-height: 5.4rem;
 }
 
@@ -197,6 +197,7 @@
 
 @media (min-width: 768px) {
   .title {
+    margin-bottom: 1.5rem;
     min-height: 8.8rem;
   }
 }
@@ -204,7 +205,7 @@
 .subtitle {
   font-size: 1rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   max-width: 700px;
   animation-delay: 0.1s;
 }

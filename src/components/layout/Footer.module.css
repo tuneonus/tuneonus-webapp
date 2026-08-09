@@ -146,7 +146,8 @@
 
 .legalLinks {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 1.5rem;
 }
 

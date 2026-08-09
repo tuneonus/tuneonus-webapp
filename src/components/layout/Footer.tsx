@@ -66,6 +66,7 @@ export default function Footer() {
           <p>&copy; {currentYear} TuneOnus. All rights reserved.</p>
           <div className={styles.legalLinks}>
             <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/privacy/paisiq">PaisiQ Privacy</Link>
             <Link href="/terms">Terms of Service</Link>
           </div>
         </div>

@@ -41,7 +41,13 @@
 .subtitle {
   font-size: 1.125rem;
   color: var(--text-muted);
-  margin: 1.5rem auto 2.5rem;
+  margin: 1.5rem auto;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .actions {
