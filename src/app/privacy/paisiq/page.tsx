@@ -29,136 +29,97 @@ export default function PaisiQPrivacyPolicy() {
     <>
       <Navbar />
       <main className="container section" style={{ paddingTop: '120px', minHeight: '80vh' }}>
-        <article style={{ maxWidth: '760px', margin: '0 auto' }}>
+        <article style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.25rem', boxSizing: 'border-box', overflowWrap: 'break-word', wordWrap: 'break-word' }}>
           <p className="eyebrow">Privacy Policy</p>
           <h1>PaisiQ Privacy Policy</h1>
           <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>
-            PaisiQ is a personal money-tracking application developed by TuneOnus. This policy explains how PaisiQ stores, processes, exports, and deletes information.
+            PaisiQ stores financial records locally. Advertising and app-health services may communicate externally, while exports leave only when you explicitly save or share them.
           </p>
-          <p style={{ marginTop: '1rem', color: 'var(--text-muted)' }}>Last updated: August 9, 2026</p>
+          <p style={{ marginTop: '1rem', color: 'var(--text-muted)' }}>Last updated: 30 August 2026</p>
 
           <section style={{ marginTop: '2.5rem' }}>
-            <h2>1. Information stored locally</h2>
+            <h2>1. Local financial data</h2>
             <p>
-              Transactions, income, expenses, categories, budgets, notes, preferences, and related financial records are stored locally in a SQLite database on the user&apos;s device.
+              Transactions, transfers, recurring rules, accounts, categories, budgets, and savings goals are stored in a local SQLite database on your device. Voice audio transcripts, receipt scanner camera photos, and imported gallery images are processed privately and entirely on-device; PaisiQ does not store audio recordings or upload photos to any external server.
             </p>
             <p style={{ marginTop: '0.75rem' }}>
-              PaisiQ V1 does not provide user accounts, cloud synchronization, bank connections, or server-side storage of transaction records.
+              <strong>PaisiQ does not sell users&apos; personal or financial data.</strong>
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>2. Advertising</h2>
+            <h2>2. Analytics and diagnostics</h2>
             <p>
-              PaisiQ uses Google Mobile Ads to display advertisements. Google and its partners may process information such as device identifiers, advertising identifiers, IP address, diagnostic information, app interactions, and approximate location derived from network information.
+              Production builds use Firebase Analytics, Crashlytics, and Performance Monitoring for app-usage statistics, crash reporting, and technical performance diagnostics. These services may process installation identifiers, IP-derived location, device and app information, crash traces, performance measurements, and network URLs without query parameters or payloads.
             </p>
             <p style={{ marginTop: '0.75rem' }}>
-              PaisiQ requests non-personalized advertisements where configured, but this does not mean that Google processes no data.
-            </p>
-            <p style={{ marginTop: '0.75rem' }}>
-              Read the{' '}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-                Google Privacy Policy
-              </a>.
+              PaisiQ does not add financial amounts, balances, transaction notes, account names, backup contents, or other financial records to this telemetry. Development and preview builds disable collection.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>3. Application updates</h2>
+            <h2>3. Advertising</h2>
             <p>
-              PaisiQ V1 does not use CodePush or another system to download executable JavaScript updates independently.
-            </p>
-            <p style={{ marginTop: '0.75rem' }}>
-              Production application updates are distributed through Google Play. Google Play may process information when checking for, downloading, or installing updates.
+              Google Mobile Ads may receive device, diagnostic, interaction, IP address, and advertising identifier data to deliver, measure, secure, and personalize ads under Google&apos;s policies. Where required, Google&apos;s consent form controls advertising consent and privacy options.
             </p>
           </section>
 
           <section style={sectionStyle}>
             <h2>4. Notifications</h2>
             <p>
-              PaisiQ can schedule optional local reminders and budget alerts.
-            </p>
-            <p style={{ marginTop: '0.75rem' }}>
-              Notification permission is requested only when the user enables a notification feature. If permission is denied, PaisiQ remains usable and reminders stay disabled.
+              If you enable reminders or budget alerts, PaisiQ requests notification permission and schedules notifications on your device. Denying permission does not affect expense tracking.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>5. Exports and user-initiated sharing</h2>
+            <h2>5. Home-screen widgets</h2>
             <p>
-              Users can export their PaisiQ data as CSV or JSON. An export may contain transaction dates, types, categories, amounts, accounts, notes, budgets, and other locally stored information.
-            </p>
-            <p style={{ marginTop: '0.75rem' }}>
-              Exported data leaves PaisiQ only when the user explicitly selects a destination through the device&apos;s system sharing interface. The selected application or service is responsible for its copy of the exported data.
+              If you add home-screen widgets, a summary of your budget progress, spent totals, and spending insights is synced to secure local storage on your device to update the widget layouts. This data remains on-device and is never transmitted externally.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>6. Data retention and deletion</h2>
-            <p>Local data remains on the device until the user:</p>
-            <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.75rem' }}>
-              <li>deletes individual records;</li>
-              <li>uses PaisiQ&apos;s “Erase all data” option;</li>
-              <li>clears the application&apos;s storage; or</li>
-              <li>uninstalls PaisiQ.</li>
-            </ul>
-            <p style={{ marginTop: '0.75rem' }}>
-              “Erase all data” deletes transactions, budgets, and preferences and restores only the application&apos;s default categories and settings.
-            </p>
-          </section>
-
-          <section style={sectionStyle}>
-            <h2>7. Android backup</h2>
+            <h2>6. Exports and sharing</h2>
             <p>
-              PaisiQ V1 disables Android system backup for application data. This prevents sensitive financial records or an incompatible SQLite database from being restored automatically.
-            </p>
-            <p style={{ marginTop: '0.75rem' }}>
-              Users may create a portable copy through the export feature. PaisiQ V1 does not support importing or restoring exported files.
+              PDF, CSV, and JSON exports can include dates, amounts, categories, accounts, and notes. Exported data leaves PaisiQ only when you explicitly save it to a chosen folder or share it with another destination. That destination controls its copy.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>8. Data security</h2>
+            <h2>7. Your choices</h2>
             <p>
-              PaisiQ uses platform-provided application storage to isolate its local database. Users should protect access to their devices and carefully choose where exported files are shared or stored.
+              You can deny notification permission, manage advertising consent and privacy options where available, choose whether to save or share exports, delete individual records, or erase all local data. Core expense tracking does not require an account or cloud connection.
             </p>
-            <p style={{ marginTop: '0.75rem' }}>No storage or transmission method can guarantee absolute security.</p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>9. Children&apos;s privacy</h2>
+            <h2>8. Security</h2>
             <p>
-              PaisiQ is not specifically directed at children. The application does not knowingly create profiles or collect transaction data from children through a PaisiQ account because PaisiQ does not provide accounts.
-            </p>
-            <p style={{ marginTop: '0.75rem' }}>
-              Advertisements displayed in the application must be configured consistently with the app&apos;s Google Play target-audience declaration.
+              PaisiQ limits financial records to local app storage and disables Android system backup. External telemetry and advertising traffic uses the security protections provided by Google and Firebase. No method of storage or transmission can be guaranteed completely secure.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>10. Third-party services</h2>
-            <p>PaisiQ may interact with:</p>
-            <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.75rem' }}>
-              <li>Google Mobile Ads for advertising;</li>
-              <li>Google Play for application distribution and updates;</li>
-              <li>the Android notification system for optional reminders; and</li>
-              <li>applications selected by the user when sharing exports.</li>
-            </ul>
-            <p style={{ marginTop: '0.75rem' }}>These services operate under their respective privacy policies.</p>
-          </section>
-
-          <section style={sectionStyle}>
-            <h2>11. Changes to this policy</h2>
+            <h2>9. Retention and deletion</h2>
             <p>
-              TuneOnus may update this policy when PaisiQ&apos;s functionality, third-party services, or legal requirements change. The latest version and effective date will remain available on this page.
+              Local data remains until you delete records, use Erase all data, clear app storage, or uninstall PaisiQ. Erase all data removes transactions, transfers, recurring rules, accounts, budgets, and preferences, then restores default categories, accounts, and settings.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2>12. Contact</h2>
+            <h2>10. Android backup</h2>
+            <p>
+              PaisiQ disables Android system backup for its app data. This prevents sensitive financial records or an incompatible SQLite database from being silently restored. Use PaisiQ&apos;s explicit backup and restore tools when you need a portable copy.
+            </p>
+          </section>
+
+          <section style={sectionStyle}>
+            <h2>11. Contact</h2>
             <p>
               For privacy questions, contact TuneOnus at{' '}
-              <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+              <a href={`mailto:${siteConfig.email}`} style={{ wordBreak: 'break-all' }}>
+                {siteConfig.email}
+              </a>.
             </p>
           </section>
         </article>
