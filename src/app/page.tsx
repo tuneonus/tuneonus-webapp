@@ -4,12 +4,12 @@ import Hero from "../components/sections/Hero";
 import Services from "../components/sections/Services";
 import AIAgents from "../components/sections/AIAgents";
 import Solutions from "../components/sections/Solutions";
+import LiveProducts from "../components/sections/LiveProducts";
 import FeaturedProjects from "../components/sections/FeaturedProjects";
 import WhyTuneOnus from "../components/sections/WhyTuneOnus";
 import Process from "../components/sections/Process";
 import EngagementModels from "../components/sections/EngagementModels";
 import TechStack from "../components/sections/TechStack";
-import Team from "../components/sections/Team";
 import CTA from "../components/sections/CTA";
 import Contact from "../components/sections/Contact";
 import FAQ from "../components/sections/FAQ";
@@ -68,12 +68,12 @@ export default function Home() {
       <Services />
       <AIAgents />
       <Solutions />
+      <LiveProducts />
       <FeaturedProjects />
       <WhyTuneOnus />
       <Process />
       <EngagementModels />
       <TechStack />
-      <Team />
       <CTA />
       <FAQ />
       <Contact />

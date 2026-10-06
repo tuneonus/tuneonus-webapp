@@ -1,0 +1,21 @@
+.hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: center; gap: 3rem; padding: 3.5rem 0 4rem; }
+.heroCopy { min-width: 0; }
+.badge { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-full); color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1.75rem; }
+.badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-color); flex-shrink: 0; }
+.title { font-size: clamp(2.75rem, 6vw, 5.25rem); letter-spacing: -0.05em; }
+.title span { display: block; margin-top: 0.75rem; font-size: 0.52em; letter-spacing: -0.025em; color: var(--text-muted); }
+.heroArt { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; min-width: 0; padding: 2.5rem 1.5rem; border: 1px solid var(--border-color); border-radius: 2rem; background: radial-gradient(ellipse at top, rgba(37, 99, 235, 0.18), transparent 70%), var(--card-bg); }
+.heroIcon { width: min(100%, 256px); height: auto; border-radius: 2rem; box-shadow: var(--shadow-lg); margin-bottom: 1.25rem; }
+.heroArt p { font-weight: 600; }
+.heroArt span { color: var(--text-muted); font-size: 0.875rem; text-align: center; }
+.sectionLabel { color: var(--text-muted); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.13em; margin-bottom: 0.75rem; }
+.preview { padding: clamp(1rem, 3vw, 2rem); border: 1px solid var(--border-color); border-radius: 2rem; background: var(--gradient-soft); }
+.preview h2, .features h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+.features { margin-top: 4.5rem; }
+.feature { position: relative; padding: 2rem; }
+.featureNumber { display: block; color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
+.feature h3 { font-size: 1.25rem; }
+.install { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; padding: clamp(1.25rem, 4vw, 3rem); border: 1px solid var(--border-color); border-radius: 2rem; background: var(--gradient-soft); margin-top: 4.5rem; }
+.install > div { min-width: 0; max-width: 600px; }
+.install h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+@media (max-width: 767px) { .hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding-top: 2rem; } .heroArt { padding: 2rem 1rem; } .heroIcon { width: 176px; } .features, .install { margin-top: 3rem; } .feature { padding: 1.5rem; } }
