@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from './Contact.module.css';
 import { Button } from '../ui/Button';
 import { ScrollReveal } from '../ui/ScrollReveal';
+import SocialLinks from '../ui/SocialLinks';
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -72,6 +73,7 @@ export default function Contact() {
                 <li><span>03</span>The technical support you need</li>
               </ul>
               <a className={styles.emailLink} href="mailto:support@tuneonus.com">support@tuneonus.com <span aria-hidden="true">→</span></a>
+              <SocialLinks />
             </aside>
           </ScrollReveal>
           <ScrollReveal direction="left" className={styles.reveal}>

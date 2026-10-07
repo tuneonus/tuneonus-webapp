@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './WhyTuneOnus.module.css';
 import { ScrollReveal } from '../ui/ScrollReveal';
+import SocialLinks from '../ui/SocialLinks';
 
 export default function WhyTuneOnus() {
   const reasons = [
@@ -22,6 +23,7 @@ export default function WhyTuneOnus() {
               <p className="subtitle" style={{ marginLeft: 0 }}>
                 TuneOnus combines product thinking with practical software engineering.
               </p>
+              <SocialLinks />
             </ScrollReveal>
             
             <div className={styles.list}>

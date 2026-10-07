@@ -5,6 +5,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import styles from './Footer.module.css';
 import { canUseWebGL } from '../../lib/webgl';
+import SocialLinks from '../ui/SocialLinks';
 
 const FooterWave = dynamic(() => import('../three/FooterWave'), { ssr: false });
 
@@ -59,6 +60,7 @@ export default function Footer() {
             <ul className={styles.linkList}>
               <li><a href="mailto:support@tuneonus.com">Email Us</a></li>
             </ul>
+            <SocialLinks />
           </div>
         </div>
 
